@@ -8,10 +8,14 @@ fn main() {
     println!("Guess the number");
     println!("Enter the guess");
 
-    let secret_number = rand::thread_rng().gen_range(1, 101);
+    let secret_number = generate_random_number();
 
     println!("The secret number is {}", secret_number);
 
+    interactive_loop(&secret_number);
+}
+
+fn interactive_loop(secret_number: &u32) {
     loop {
         println!("Please input your guess");
 
@@ -36,4 +40,8 @@ fn main() {
             }
         }
     }
+}
+
+fn generate_random_number() -> u32 {
+    rand::thread_rng().gen_range(1, 101)
 }
